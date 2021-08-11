@@ -268,9 +268,9 @@ Wire Wire Line
 Text GLabel 2750 3900 0    50   Input ~ 0
 PWR_IND
 Text GLabel 3950 3800 2    50   Input ~ 0
-DATA_LEDS_L
+DATA_LEDS_F
 Text GLabel 3950 3900 2    50   Input ~ 0
-CLOCK_LEDS_L
+CLOCK_LEDS_F
 $Comp
 L Connector:Conn_01x02_Male J_LIPO_SW_M1
 U 1 1 6005A1E3
@@ -331,15 +331,15 @@ F 3 "~" H 5100 6750 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 4900 6850 0    50   Input ~ 0
-DATA_LEDS_R
+DATA_LEDS_B
 Text GLabel 4900 6750 0    50   Input ~ 0
-CLOCK_LEDS_R
+CLOCK_LEDS_B
 Wire Wire Line
 	4900 6500 4900 6650
 Text GLabel 4900 6350 0    50   Input ~ 0
-DATA_LEDS_L
+DATA_LEDS_F
 Text GLabel 4900 6250 0    50   Input ~ 0
-CLOCK_LEDS_L
+CLOCK_LEDS_F
 Wire Wire Line
 	4200 6000 4900 6000
 $Comp
@@ -401,9 +401,9 @@ F 3 "" H 4200 6650 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 3950 4000 2    50   Input ~ 0
-DATA_LEDS_R
+DATA_LEDS_B
 Text GLabel 3950 4100 2    50   Input ~ 0
-CLOCK_LEDS_R
+CLOCK_LEDS_B
 Wire Wire Line
 	5450 1350 5450 1450
 Wire Wire Line
@@ -528,4 +528,6 @@ Wire Wire Line
 	7250 1400 6850 1400
 Wire Wire Line
 	6850 1400 6850 1350
+Text Notes 5250 6050 0    50   ~ 0
+going from left high to right high
 $EndSCHEMATC
