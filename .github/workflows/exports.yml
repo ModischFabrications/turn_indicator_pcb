@@ -4,12 +4,10 @@ on:
   workflow_dispatch:
   push:
     paths:
-    - '**.sch'
-    - '**.kicad_pcb'
+    - 'PCB'
   pull_request:
     paths:
-      - '**.sch'
-      - '**.kicad_pcb'
+    - 'PCB'
 
 jobs:
   export:
@@ -26,9 +24,9 @@ jobs:
       # optional - prefix to output defined in config
         dir: docs
       # optional - schematic file
-        schema: '**.sch'
+        schema: 'PCB/*.sch'
       # optional - PCB design file
-        board: '**.kicad_pcb'
+        board: 'PCB/*.kicad_pcb'
       # optional - verbose output info
         verbose: 1
         
