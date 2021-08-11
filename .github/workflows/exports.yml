@@ -22,7 +22,7 @@ jobs:
     - uses: nerdyscout/kicad-exports@v2.3.1
       with:
       # Required - kibot config file
-        config: .github/workflows/docs.kibot.yaml
+        config: docs.kibot.yaml
       # optional - prefix to output defined in config
         dir: docs
       # optional - schematic file
