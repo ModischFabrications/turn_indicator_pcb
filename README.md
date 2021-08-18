@@ -1,6 +1,6 @@
 # turn_indicator_pcb
 
-This is the PCB for https://github.com/ModischFabrications/Turn_Indicator
+This is the PCB for [Turn Indicator](https://github.com/ModischFabrications/Turn_Indicator).
 
 Open like regular in KiCad. 
 
