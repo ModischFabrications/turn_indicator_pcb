@@ -27,8 +27,6 @@ jobs:
         schema: 'PCB/*.sch'
       # optional - PCB design file
         board: 'PCB/*.kicad_pcb'
-      # optional - verbose output info
-        verbose: 1
         
     - name: upload results
       uses: actions/upload-artifact@v2
@@ -36,4 +34,3 @@ jobs:
         name: docs
         path: |
             docs
-            !**.ogv
