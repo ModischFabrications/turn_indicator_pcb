@@ -2,15 +2,16 @@ kibot:
   version: 1
 
 preflight:
+  check_zone_fills: true
+  ignore_unconnected: false
   run_erc: true
-  run_drc: false
-  check_zone_fills: false
-  ignore_unconnected: true
+  run_drc: true
 
 outputs:
 
+# TODO could be expanded to full gerber outputs for JLCPCB
+
 # https://github.com/nerdyscout/kicad-exports/blob/main/config/docs.schema.kibot.yaml
-  # For more information: https://github.com/INTI-CMNB/KiBoM
   - name: 'print schema'
     comment: "Print schematic (PDF)"
     type: pdf_sch_print
@@ -26,7 +27,6 @@ outputs:
       output: '%f-%i.%x' #[string='%f-%i%v.%x'] filename for the output SVG (%i=schematic %x=svg). Affected by global options.
       
 # https://github.com/nerdyscout/kicad-exports/blob/main/config/plot.black.kibot.yaml
-  # For more information: https://github.com/INTI-CMNB/KiBoM
   - name: 'https://github.com/yaqwsx/PcbDraw'
     comment: 'default black svg top'
     type: 'pcbdraw'
