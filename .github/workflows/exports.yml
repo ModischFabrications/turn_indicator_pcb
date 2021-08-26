@@ -1,13 +1,6 @@
 name: KiCad Exports
 
-on:
-  workflow_dispatch:
-  push:
-    paths:
-    - 'PCB'
-  pull_request:
-    paths:
-    - 'PCB'
+on: [push, pull_request, workflow_dispatch]
 
 jobs:
   export:
@@ -32,5 +25,5 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: docs
-        path: |
-            docs
+        path: docs
+            
