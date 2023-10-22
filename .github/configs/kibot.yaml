@@ -6,7 +6,9 @@ preflight:
   check_zone_fills: true
 #  ignore_unconnected: false
   run_erc: true
+#  erc_warnings: false
   run_drc: true
+  drc_warnings: false
 #  update_xml: true     # needed for kicost
 
 global:
