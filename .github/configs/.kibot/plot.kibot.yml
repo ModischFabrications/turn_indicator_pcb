@@ -1,0 +1,52 @@
+outputs:
+    # TODO: print as png?
+  - name: 'schematic.pdf'
+    comment: "generate schematic (pdf)"
+    type: pdf_sch_print
+    dir: .
+    options:
+      output: '%f-%i.%x'
+
+  - name: 'board_top.png'
+    comment: 'https://github.com/yaqwsx/PcbDraw'
+    type: 'pcbdraw'
+    dir: png
+    options:
+      bottom: false
+      dnf_filter: ''
+      dpi: 300
+      format: 'png'
+      highlight: []
+      libs: []
+      mirror: false
+      no_drillholes: false
+      output: '%f-%i.%x'
+      placeholder: false
+      remap:
+      show_components: none
+      style: '/usr/share/pcbdraw/styles/set-blue-cu.json'
+      variant: ''
+      vcuts: false
+      warnings: 'none'
+
+  - name: 'board_bottom.png'
+    comment: 'https://github.com/yaqwsx/PcbDraw'
+    type: 'pcbdraw'
+    dir: png
+    options:
+      bottom: true
+      dnf_filter: ''
+      dpi: 300
+      format: 'png'
+      highlight: []
+      libs: []
+      mirror: false
+      no_drillholes: false
+      output: '%f-%i.%x'
+      placeholder: false
+      remap:
+      show_components: none
+      style: '/usr/share/pcbdraw/styles/set-blue-cu.json'
+      variant: ''
+      vcuts: false
+      warnings: 'none'

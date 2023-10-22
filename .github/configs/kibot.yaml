@@ -1,0 +1,46 @@
+kibot:
+  version: 1
+
+# https://github.com/INTI-CMNB/KiBot/#configuration
+preflight:
+  check_zone_fills: true
+#  ignore_unconnected: false
+  run_erc: true
+  run_drc: true
+#  update_xml: true     # needed for kicost
+
+global:
+  filters:
+    - number: 9
+      regex: 'KiCad config without environment.vars section'
+    - number: 58
+      regex:  "The current configuration does not include the library 'LCSC'"
+    - number: 58
+      regex:  "The current configuration does not include the library 'ModischFabrications'"
+
+# https://github.com/nerdyscout/KiCAD-CICD-Template
+# https://github.com/INTI-CMNB/KiBot/#the-outputs-section
+# https://github.com/INTI-CMNB/KiBot/tree/master/tests/yaml_samples
+import:
+  - file: .kibot/info.kibot.yml
+  - file: .kibot/diff.kibot.yml
+# --- docs
+#  - file: .kibot/bom_ibom.kibot.yml
+#  - file: .kibot/bom_kicost.kibot.yml
+#  - file: .kibot/bom_octopart.kibot.yml
+#  - file: .kibot/docs.kibot.yml
+#  - file: .kibot/datasheets.kibot.yml
+# --- img
+#  - file: .kibot/render.kibot.yml
+  - file: .kibot/plot.kibot.yml
+  - file: .kibot/plot-svg.kibot.yml
+# --- cad
+  - file: .kibot/boardview.kibot.yml
+  - file: .kibot/step.kibot.yml
+#  - file: .kibot/dxf.kibot.yml
+# --- fabrications
+#  - file: .kibot/drills.kibot.yml
+#  - file: .kibot/fabrications.kibot.yml
+  - file: .kibot/gerbers_jlcpcb.kibot.yml
+# --- tests
+  - file: .kibot/tests.kibot.yml

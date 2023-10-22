@@ -1,0 +1,21 @@
+outputs:
+  # https://github.com/INTI-CMNB/KiBot/
+  - name: 'kicad 3d view top'
+    type: 'render_3d'
+    dir: 'img/render'
+    options:
+      download: true
+      output: '%f-top.%x'
+      ray_tracing: false
+      view: top
+
+  - name: 'kicad 3d view bottom'
+    type: 'render_3d'
+    dir: 'img/render'
+    options:
+      download: true
+      output: '%f-bottom.%x'
+      ray_tracing: false
+      view: bottom
+
+# might want to use the newer blender renderer when released: https://github.com/INTI-CMNB/KiBot/issues/380#issuecomment-1412012094

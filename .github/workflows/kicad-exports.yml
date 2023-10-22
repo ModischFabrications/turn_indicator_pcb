@@ -1,0 +1,79 @@
+name: KiCAD Exports
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+permissions:
+  contents: write
+#  pages: write
+#  deployments: write
+
+concurrency: ci-${{ github.ref }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+
+    outputs:
+      artifact: ${{ steps.generate-name.outputs.artifact }}
+
+    steps:
+    - name: Checkout 🛎️
+      uses: actions/checkout@v3
+
+    # double quote to support shell parameter expansion
+    - name: Generate artifact name 📋
+      id: generate-name
+      run: |
+        timestring=$(git log -1 --format='%as')
+        # timestring=$(echo ${{ github.event.head_commit.timestamp }} | cut -d "T" -f 1)
+        artifactname="${{ github.event.repository.name }}_${{ github.ref_name }}_${{ github.run_id }}_${timestring}"
+        echo "Output name: ${artifactname}"
+        echo "artifact=${artifactname}" >> $GITHUB_OUTPUT
+
+    # https://github.com/INTI-CMNB/KiBot/#usage-of-github-actions
+    # https://github.com/nerdyscout/KiCAD-CICD-Template
+    - name: Generate KiCAD exports ⚙️
+      uses: INTI-CMNB/KiBot@v2_k6
+      with:
+        config: .github/configs/kibot.yaml
+        dir: output
+        schema: "PCB/turn_indicator.kicad_sch"
+        board: "PCB/turn_indicator.kicad_pcb"
+        
+    - name: Upload results 📤
+      if: ${{ always() }}  # I want any output I can get
+      uses: actions/upload-artifact@v3
+      with:
+        if-no-files-found: error
+        name: ${{ steps.generate-name.outputs.artifact }}
+        path: output/
+
+  release:
+    if: github.ref_type == 'tag' && startsWith(github.ref_name, 'v')
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+
+    steps:
+    - name: Download artifacts from previous job 📥
+      uses: actions/download-artifact@v3
+      with:
+        name: ${{ needs.build.outputs.artifact }}
+        path: dist/
+
+    - name: Compress artifacts for distribution 📦
+      uses: vimtor/action-zip@v1.1
+      with:
+        files: dist/
+        dest: ${{ needs.build.outputs.artifact }}.zip
+
+    - name: Release 🚀
+      uses: softprops/action-gh-release@v1
+      with:
+        generate_release_notes: true
+        fail_on_unmatched_files: true
+        files: ${{ needs.build.outputs.artifact }}.zip
