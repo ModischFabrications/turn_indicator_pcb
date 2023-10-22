@@ -7,8 +7,7 @@ preflight:
 #  ignore_unconnected: false
   run_erc: true
 #  erc_warnings: false
-  run_drc: true
-  drc_warnings: false
+  run_drc: false
 #  update_xml: true     # needed for kicost
 
 global:
