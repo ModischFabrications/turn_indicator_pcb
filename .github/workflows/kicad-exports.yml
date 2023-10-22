@@ -37,7 +37,7 @@ jobs:
     # https://github.com/INTI-CMNB/KiBot/#usage-of-github-actions
     # https://github.com/nerdyscout/KiCAD-CICD-Template
     - name: Generate KiCAD exports ⚙️
-      uses: INTI-CMNB/KiBot@v2_k6
+      uses: INTI-CMNB/KiBot@v2_k7
       with:
         config: .github/configs/kibot.yaml
         dir: output
