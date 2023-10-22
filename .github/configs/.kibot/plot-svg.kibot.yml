@@ -39,7 +39,7 @@ outputs:
       show_components: none
       # [string|dict] PCB style (colors). An internal name, the name of a JSON file or the style options
       # https://github.com/yaqwsx/PcbDraw/tree/master/pcbdraw/resources/styles
-      style: '/usr/share/pcbdraw/styles/set-blue-cu.json'
+      style: 'set-blue-cu'
       # [string=''] Board variant to apply
       variant: ''
       # [boolean=false] render V-CUTS on the Cmts.User layer
@@ -64,7 +64,7 @@ outputs:
       placeholder: false
       remap:
       show_components: none
-      style: '/usr/share/pcbdraw/styles/set-blue-cu.json'
+      style: 'set-blue-cu'
       variant: ''
       vcuts: false
       warnings: 'none'
